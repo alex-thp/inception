@@ -1,0 +1,3 @@
+docker-compose up -d //Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit
+
+start docker : sudo service docker start
