@@ -1,4 +1,8 @@
 version: "3.3"
+networks:
+  inception-network:
+    driver: bridge
+    name: inception-network
 services:
   nginx:
     build: srcs/nginx/.
@@ -6,7 +10,19 @@ services:
     restart: always
     ports:
       - 443:443
+    networks:
+      - inception-network
   mariadb:
     build: srcs/mariadb/.
     container_name: container_mariadb
     restart: always
+    networks:
+      - inception-network
+  wordpress:
+    build: srcs/wordpress/.
+    container_name: container_wordpress
+    restart: always
+    ports:
+      - 8080:9000
+    networks:
+      - inception-network
