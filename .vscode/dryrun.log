@@ -1,0 +1,4 @@
+make: Entering directory '/home/alex2tsudo/Documents/inception'
+sudo docker-compose up -d
+make: Leaving directory '/home/alex2tsudo/Documents/inception'
+ 
