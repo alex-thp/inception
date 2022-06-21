@@ -1,8 +1,18 @@
 version: "3.3"
 
+networks:
+  inception-network:
+    driver: bridge
+    name: inception-network
+  
 services:
   nginx:
     build: srcs/nginx/.
+    volumes:
+      - volume_wordpress:/var/www/html
+      - volume_mariadb:/var/lib/mysql
+    depends_on:
+      - wordpress
     container_name: container_nginx
     restart: unless-stopped
     ports:
@@ -23,27 +33,26 @@ services:
     build: srcs/wordpress/.
     volumes:
       - volume_wordpress:/var/www/html
+    depends_on:
+      - mariadb
     container_name: container_wordpress
     restart: unless-stopped
     networks:
       - inception-network
-
-networks:
-  inception-network:
-    driver: bridge
-    name: inception-network
 
 volumes:
   volume_wordpress:
     name: volume_wordpress
     driver: local
     driver_opts:
-      type: volume
-      device: /home/alex2tsudo/data/volume_wordpress
+      type: none
+      device: /home/ade-temm/data/
+      o: bind
 
   volume_mariadb:
     name: volume_mariadb
     driver: local
     driver_opts:
-      type: volume
-      device: /home/alex2tsudo/data/volume_mariadb
+      type: none
+      device: /home/ade-temm/data/
+      o: bind

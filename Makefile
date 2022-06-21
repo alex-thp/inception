@@ -1,4 +1,6 @@
 all:
+	mkdir -p ~/alex2tsudo/home/ade-temm/data/volume_wordpress
+	mkdir -p ~/alex2tsudo/home/ade-temm/data/volume_mariadb
 	sudo docker-compose up -d
 
 clean:
