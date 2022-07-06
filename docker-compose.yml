@@ -9,8 +9,8 @@ services:
   nginx:
     build: srcs/nginx/.
     volumes:
-      - volume_wordpress:/var/www/html
-      - volume_mariadb:/var/lib/mysql
+            - volume_wordpress:/var/www/html:rw
+            - volume_mariadb:/var/lib/mysql:rw
     depends_on:
       - wordpress
     container_name: container_nginx
@@ -32,7 +32,7 @@ services:
   wordpress:
     build: srcs/wordpress/.
     volumes:
-      - volume_wordpress:/var/www/html
+            - volume_wordpress:/var/www/html:rw
     depends_on:
       - mariadb
     container_name: container_wordpress
