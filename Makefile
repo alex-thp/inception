@@ -17,3 +17,12 @@ clean:
 	sudo docker volume rm -f volume_mariadb
 
 re: clean all
+
+exec_nginx:
+	sudo docker container exec -it container_nginx bash
+
+exec_wordpress:
+	sudo docker container exec -it container_wordpress bash
+
+exec_mariadb:
+	sudo docker container exec -it container_mariadb bash

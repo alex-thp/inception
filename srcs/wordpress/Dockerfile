@@ -9,12 +9,15 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
+RUN apt-get install -y mariadb-client
+
 COPY wp-config.php /var/www/
-EXPOSE 9000
+#EXPOSE 9000
 
 COPY entrypoint.sh .
 COPY ww.conf /etc/php/7.3/fpm/pool.d
-RUN chmod 777 /var/www/html
+#RUN chmod 777 /var/www/html
+
 
 RUN sh -xv entrypoint.sh
 
