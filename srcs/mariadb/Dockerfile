@@ -3,19 +3,23 @@ FROM debian:buster
 RUN apt-get update
 RUN apt-get install -y mariadb-server
 
-RUN rm /etc/mysql/mariadb.conf.d/50-server.cnf
+#RUN rm /etc/mysql/mariadb.conf.d/50-server.cnf
 
 EXPOSE 3306
 
 COPY ./50-server.cnf /etc/mysql/mariadb.conf.d/
-#COPY entrypoint.sh .
+COPY entrypoint.sh .
 COPY datab.sql /var/www/
 
-RUN	service mysql start && mysql < /var/www/datab.sql && rm -f /var/www/datab.sql
+#RUN	service mysql start && mysql < /var/www/datab.sql 
+#&& rm -f /var/www/datab.sql
 
-RUN service mysql stop
+#RUN service mysql restart
+#stop
 
-RUN sleep 10
+#RUN rm -rf /var/lib/mysql/*
 
-CMD ["mysqld"]
-#ENTRYPOINT ["bash", "entrypoint.sh"]
+#RUN sleep 10
+
+#CMD ["mysqld", "--init-file=/var/www/datab.sql"]
+ENTRYPOINT ["bash", "entrypoint.sh"]

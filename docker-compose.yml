@@ -37,6 +37,8 @@ services:
       - mariadb
     container_name: container_wordpress
     restart: unless-stopped
+    ports:
+      - 8888:80
     networks:
       - inception-network
 
