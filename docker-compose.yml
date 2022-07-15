@@ -32,7 +32,7 @@ services:
   wordpress:
     build: srcs/wordpress/.
     volumes:
-            - volume_wordpress:/var/www/html:rw
+      - volume_wordpress:/var/www/html:rw
     depends_on:
       - mariadb
     container_name: container_wordpress
@@ -48,7 +48,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/ade-temm/data/
+      device: /home/ade-temm/data/wordpress
       o: bind
 
   volume_mariadb:
@@ -56,5 +56,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/ade-temm/data/
+      device: /home/ade-temm/data/mariadb
       o: bind

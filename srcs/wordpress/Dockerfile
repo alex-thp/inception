@@ -14,13 +14,14 @@ RUN apt-get install -y mariadb-client
 COPY wp-config.php /var/www/
 #EXPOSE 9000
 
+RUN mkdir -p /var/www/html
 COPY entrypoint.sh .
-COPY ww.conf /etc/php/7.3/fpm/pool.d
+COPY www.conf /etc/php/7.3/fpm/pool.d
 #RUN chmod 777 /var/www/html
 
 
-RUN sh -xv entrypoint.sh
+#RUN sh -xv entrypoint.sh
 
-#ENTRYPOINT [ "sh", "-xv", "entrypoint.sh" ]
+ENTRYPOINT [ "sh", "-xv", "entrypoint.sh" ]
 
 CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
