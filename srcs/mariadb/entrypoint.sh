@@ -3,4 +3,3 @@ mkdir -p /var/run/mysqld
 mysql_install_db --user=root
 service mysql stop
 mysqld --init-file=/var/www/datab.sql
-cat /var/log/mysql/error.log
