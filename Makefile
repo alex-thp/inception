@@ -14,7 +14,13 @@ clean:
 	sudo docker volume rm -f volume_wordpress
 	sudo docker volume rm -f volume_mariadb
 
-re: clean all
+re: fclean all
+
+fclean:
+	sudo docker-compose down
+	sudo docker volume rm volume_mariadb
+	sudo docker volume rm volume_wordpress
+	sudo docker system prune -af
 
 exec_nginx:
 	sudo docker container exec -it container_nginx bash
