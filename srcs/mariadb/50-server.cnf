@@ -25,7 +25,7 @@ lc-messages-dir         = /usr/share/mysql
 
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-#bind-address            = 127.0.0.1 #on a commente ca car utilisation du port de nginx
+bind-address            = 0.0.0.0 #n a commente ca car utilisation du port de nginx
 
 #
 # * Fine Tuning

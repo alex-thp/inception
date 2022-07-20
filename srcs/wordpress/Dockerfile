@@ -14,6 +14,10 @@ RUN apt-get install -y mariadb-client
 COPY wp-config.php /var/www/
 EXPOSE 9000
 RUN mkdir -p /var/www/html
+#RUN chmod 777 /war/www/html
+#RUN cd /var/www/html
+#RUN wp core download --allow-root
+#RUN cd ../../..
 COPY entrypoint.sh .
 COPY www.conf /etc/php/7.3/fpm/pool.d
 #RUN chmod 777 /var/www/html
