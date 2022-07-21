@@ -14,7 +14,7 @@ cd /var/www/html
 wp core download --allow-root
 wp config create --dbname=dbwordpress --dbuser=wordpress_user --dbpass=wordpress_secret --dbhost=container_mariadb --allow-root
 wp core install --url=ade-temm.42.fr --title=Mon_site --admin_user=super_user --admin_password=super_secret --admin_email=admin@admin.com --allow-root
-wp user create --allow-root super_user alexandre2t@hotmail.fr --user_pass=super_secret
+wp user create wordpress_user alexandre2t@hotmail.fr --role=author --user_pass=wordpress_secret --allow-root
 
 
 /usr/sbin/php-fpm7.3 --nodaemonize
