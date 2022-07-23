@@ -9,9 +9,12 @@ EXPOSE 3306
 
 COPY ./50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY entrypoint.sh .
+RUN apt-get install gettext-base -y
+RUN apt-get install procps -y
 COPY datab.sql /var/www/
+RUN envsubst < /var/www/datab.sql > datab2.sql
 
-RUN	service mysql start && mysql < /var/www/datab.sql 
+RUN	service mysql start && mysql < datab2.sql 
 #&& rm -f /var/www/datab.sql
 
 #RUN service mysql restart

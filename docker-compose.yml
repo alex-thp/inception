@@ -36,6 +36,8 @@ services:
     depends_on:
       - mariadb
     container_name: container_wordpress
+    env_file:
+      - .env
     restart: unless-stopped
     networks:
       - inception-network
